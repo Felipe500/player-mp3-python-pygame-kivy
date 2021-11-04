@@ -1,0 +1,82 @@
+
+#:kivy 1.10.0
+Tela_Principal:
+	Label:
+		text:'musica'
+		on_value:
+		id:nmusica
+		size_hint_y:.5 
+		size_hint_x:.3
+		
+		pos_hint:{"x":.35,"y":.72}
+
+    Bubble:
+        size_hint_y: None
+        size_hint_x:.4
+		height:'59dp'
+		pos_hint:{"x":0.3,"y":0.05}
+
+        BubbleButton:
+            text: '<<'
+			id: voltar_m
+			on_press:root.voltar()
+			disabled: False
+			
+        BubbleButton:
+			id: play_pause
+            text: 'PLAY'
+			on_press: root.play_musica()
+			disabled: False
+			
+        BubbleButton:
+            text: '>>'
+			id: avancar_m
+			on_press:root.proximo()
+			disabled: False
+	
+
+    Widget:
+        size_hint_y: None
+        height: '48dp'
+
+		
+	ProgressBar:
+		size_hint_y:.08
+		size_hint_x:.80
+		pos_hint:{"x":0.06,"y":0.12}
+		on_value: root.posicao()
+		id:barra
+		value:2
+		max:100
+	
+	
+	Label:
+		text:'volume_som'
+		id : vsom
+		text: '{}'.format(volume_som.value)
+		step:0.02
+		size_hint_y:.1
+		size_hint_x:.15
+		pos_hint:{"x":0.70,"y":0.084}
+
+	Label:	
+		id : tempo2
+		text:""
+		step:0.02
+		size_hint_y:.1
+		size_hint_x:.1
+		pos_hint:{"x":0.04,"y":0.054}
+	
+	Slider:
+		id:volume_som
+		min:0.0
+		max:1.0
+		value:0
+		step:0.010
+		on_value: root.confi_voll(self.value)
+		size_hint_y:.1
+		size_hint_x:.15
+		pos_hint:{"x":0.70,"y":0.053}
+		disabled: False
+	
+		
